@@ -47,6 +47,6 @@ jobs:
           # GitHub Personal Access Token
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: echo "The modified files are ${{ steps.gh-action-get-changed-files.outputs.all }}"
-      - run: echo "SWAGGER_HUB_API=${{ steps.gh-action-get-changed-files.outputs.all[0] }}" >> $GITHUB_ENV
+      - run: echo "The modified files are ${{ steps.gh-action-get-changed-files.outputs.all[0] }}"
+      - run: echo "SWAGGER_HUB_API=${{ steps.gh-action-get-changed-files.outputs.all }}" >> $GITHUB_ENV
       - run: echo "The first modified file taken from env variable is ${{ env.SWAGGER_HUB_API }}"
