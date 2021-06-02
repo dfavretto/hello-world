@@ -19,8 +19,6 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    env:
-      SWAGGER_HUB_API: OAPI
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -47,6 +45,12 @@ jobs:
           # GitHub Personal Access Token
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: echo "The modified files are ${{ steps.gh-action-get-changed-files.outputs.all[0] }}"
-      - run: echo "SWAGGER_HUB_API=${{ steps.gh-action-get-changed-files.outputs.all }}" >> $GITHUB_ENV
-      - run: echo "The first modified file taken from env variable is ${{ env.SWAGGER_HUB_API }}"
+      - run: echo "The modified files are ${{ steps.gh-action-get-changed-files.outputs.all }}"
+      - run: echo "The modified files are ${{ fromJSON(steps.gh-action-get-changed-files.outputs.all) }}"
+      - run: echo "The modified files are ${{ fromJSON(steps.gh-action-get-changed-files.outputs.all)[0] }}"
+      - name: Save modified files to env var
+        env:
+          SWAGGER_HUB_API: ${{ steps.gh-action-get-changed-files.outputs.all }}
+        run: echo "$SWAGGER_HUB_API"
+      # - run: echo "SWAGGER_HUB_API=${{ steps.gh-action-get-changed-files.outputs.all }}" >> $GITHUB_ENV
+      # - run: echo "The first modified file taken from env variable is ${{ env.SWAGGER_HUB_API }}"
