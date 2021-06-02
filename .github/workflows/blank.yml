@@ -43,3 +43,5 @@ jobs:
         with:
           # GitHub Personal Access Token
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: echo "The modified files are ${{ steps.gh-action-get-changed-files.outputs.all }}"
