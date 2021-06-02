@@ -45,4 +45,4 @@ jobs:
           # GitHub Personal Access Token
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: echo "The modified files are ${{ steps }}"
+      - run: echo "The modified files are ${{ fromJson(steps) }}"
