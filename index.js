@@ -20,3 +20,4 @@ const readSwaggerDefinitionFile = () =>
   fs.readFileSync(path.resolve(__dirname, `./${getSwaggerHubApiName()}.yaml`), 'utf8');
 
 console.log(readSwaggerDefinitionFile());
+
