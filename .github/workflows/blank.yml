@@ -46,11 +46,13 @@ jobs:
         with:
           # GitHub Personal Access Token
           token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          SWAGGER_HUB_API: ${{ steps.gh-action-get-changed-files.outputs.all }}
 
       # - run: echo "The modified files are ${{ fromJSON(steps.gh-action-get-changed-files.outputs.all)[0] }}"
       - name: Save modified files to env var
-        env:
-          SWAGGER_HUB_API: ${{ steps.gh-action-get-changed-files.outputs.all }}
+        #env:
+          #SWAGGER_HUB_API: ${{ steps.gh-action-get-changed-files.outputs.all }}
         run: |
           echo "$SWAGGER_HUB_API"
           echo ${{ fromJSON(env.SWAGGER_HUB_API)[0] }}
