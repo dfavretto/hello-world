@@ -50,9 +50,10 @@ jobs:
       - name: Save modified files to env var
         # env:
         #   MODIFIED_FILES: ${{ steps.gh-action-get-changed-files.outputs.all }}
-        run: echo "::set-env name=MODIFIED_FILES::${{ steps.gh-action-get-changed-files.outputs.all }}"
-          # echo "$MODIFIED_FILES"
-          # echo ${{ fromJSON(env.MODIFIED_FILES)[0] }}
+        run: |
+          echo "MODIFIED_FILES=${{ steps.gh-action-get-changed-files.outputs.all }}" >> $GITHUB_ENV
+          echo "$MODIFIED_FILES"
+          echo ${{ fromJSON(env.MODIFIED_FILES)[0] }}
       # - run: echo "MODIFIED_FILES=${{ steps.gh-action-get-changed-files.outputs.all }}" >> $GITHUB_ENV
       # - run: echo "The first modified file taken from env variable is ${{ env.MODIFIED_FILES }}"
       - run: npm install
