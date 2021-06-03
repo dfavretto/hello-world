@@ -8,6 +8,7 @@ const swaggerHubApiNames = {
 }
 
 // const SWAGGER_HUB_API = process.env.SWAGGER_HUB_API;
+console.log(process.env.MODIFIED_FILES);
 const MODIFIED_FILES = JSON.parse(process.env.MODIFIED_FILES);
 // const MODIFIED_FILES = [".github/workflows/blank.yml","README.md","index.js", "oapi.js"];
 
