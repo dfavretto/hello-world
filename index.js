@@ -1,0 +1,1 @@
+console.log("Prueba de imprimir algo por consola.");
