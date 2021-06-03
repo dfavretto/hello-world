@@ -23,6 +23,10 @@ const getSwaggerHubApiName = () =>
 const readSwaggerDefinitionFile = () =>
   fs.readFileSync(path.resolve(__dirname, `./${getSwaggerFileName()}.yaml`), 'utf8');
 
+console.log(getModifiedFilesByName());
+console.log(getSwaggerFileName());
+console.log(getSwaggerHubApiName());
+
 if (getSwaggerFileName() !== undefined) {
     console.log(readSwaggerDefinitionFile());
     console.log(getSwaggerHubApiName());
